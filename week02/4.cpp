@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ void f(int n){
     }
     isPrime[0] = isPrime[1] = false;
     
-    for(int i = 2; i <= n; i++){
+    for(int i = 2; i * i <= n; i++){
         if(isPrime[i] == true){
             int j = i + i;
             while(j <= n){

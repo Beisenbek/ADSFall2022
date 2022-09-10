@@ -11,7 +11,7 @@ void f(int n){
     }
     isPrime[0] = isPrime[1] = false;
     
-    for(int i = 2; i <= n; i++){
+    for(int i = 2; i <= n / 2; i++){
         if(isPrime[i] == true){
             int j = i + i;
             while(j <= n){
