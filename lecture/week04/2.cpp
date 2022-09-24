@@ -2,19 +2,13 @@
 
 using namespace std;
 
-int main(){
 
-    
-    int a[] = {1, 2, 3, 4};
-    int n = sizeof(a) / sizeof(a[0]);
-
+int bs(int a[], int n, int x){
+    int res = -1;
     int l = 0; 
     int r = n - 1;
-
-    int x;
-    cin >> x;
     int m;
-    
+
     while(l <= r){
         m = l + (r - l)/ 2;
         if(x < a[m]){
@@ -26,12 +20,20 @@ int main(){
         }
     }
 
-    if(l > r){
-        cout << "not found!";
-    }else
     if(a[m] == x){
-        cout << m << endl;
+        res = m;
     }
+
+    return res;
+}
+
+int main(){
+    int a[] = {1, 2, 3, 4};
+    int n = sizeof(a) / sizeof(a[0]);
+    int x;
+    cin >> x;
+
+    cout << bs(a, n, x);
 
     return 0;
 }
