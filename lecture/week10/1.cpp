@@ -2,13 +2,9 @@
 
 using namespace std;
 
-int f1(char c){
-    return c - int('a') + 1;
-}
-
 void f(string t, string s){
-    int n = t.size();
-    int m = s.size();
+    size_t n = t.size();
+    size_t m = s.size();
 
     long long h[n];
     long long p[n];
@@ -16,28 +12,28 @@ void f(string t, string s){
 
     p[0] = 1;
 
-    for(int i = 1; i < max(n, m); ++i){
+    for(size_t i = 1; i < max(n, m); ++i){
         p[i] = (p[i - 1] * 31) % q;
     }
 
-    for(int i = 0; i < n; ++i){
-        if(i == 0){
-            h[i] = (f1(t[i]) * p[i]) % q;
-        }else{
-            h[i] = (h[i - 1] + (f1(t[i]) * p[i]) % q ) % q;
+    for(size_t i = 0; i < n; ++i){
+        h[i] = ((t[i] - int('a') + 1) * p[i]) % q;
+        if(i > 0){
+            h[i] = (h[i] + h[i - 1])  % q;
         }
     }
     long long h_s = 0;
-    for(int i = 0; i < m; ++i){
-        h_s += (f1(s[i]) * p[i]) % q;
+    for(size_t i = 0; i < m; ++i){
+        h_s = (h_s + ((s[i] - int('a') + 1) * p[i]) % q) % q;
     }
 
-    for(int i = 0; i <= n - m; i++){
-        long long d = h[i+m-1];
+    for(size_t i = 0; i + m - 1 < n; i++){
+        long long d = h[i + m - 1];
         if(i > 0){
             d -= h[i-1];
+            //cout << t.substr(0, i) << " "  << t.substr(i, m) << " " << t.substr(0, i + m) <<  endl;
         }
-        if( d == (h_s * p[i]) % q){
+        if( d == (h_s * p[i]) % q && t.substr(i, m) == s){
             cout << "found " << i << endl;
         }
     }
