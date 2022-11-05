@@ -8,7 +8,7 @@ void f(string t, string s){
 
     long long h[n];
     long long p[n];
-    long long q = INT_MAX;
+    long long q = (1 << 30) - 1;
 
     p[0] = 1;
 
