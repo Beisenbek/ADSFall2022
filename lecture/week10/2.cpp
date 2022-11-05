@@ -8,7 +8,7 @@ void f(string t, string s){
 
     long long h[n];
     long long p[n];
-    long long q = LONG_LONG_MAX;
+    long long q = INT_MAX;
 
     p[0] = 1;
 
@@ -30,9 +30,9 @@ void f(string t, string s){
     for(size_t i = 0; i + m - 1 < n; i++){
         long long d = h[i + m - 1];
         if(i > 0){
-            d -= h[i-1];
+            d = (d - h[i-1] + q) % q;
         }
-        if( d == h_s * p[i]  && t.substr(i, m) == s){
+        if( d == (h_s * p[i]) % q  && t.substr(i, m) == s){
             cout << "found " << i << endl;
         }
     }
