@@ -8,7 +8,7 @@ void f(string t, string s){
 
     long long h[n];
     long long p[n];
-    long long q = (1 << 30) + 1;
+    long long q = LONG_LONG_MAX;
 
     p[0] = 1;
 
@@ -22,6 +22,7 @@ void f(string t, string s){
             h[i] = (h[i] + h[i - 1])  % q;
         }
     }
+
     long long h_s = 0;
     for(size_t i = 0; i < m; ++i){
         h_s = (h_s + ((s[i] - int('a') + 1) * p[i]) % q) % q;
