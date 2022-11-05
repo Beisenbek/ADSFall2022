@@ -32,7 +32,7 @@ void f(string t, string s){
         if(i > 0){
             d -= h[i-1];
         }
-        if( d == (h_s * p[i]) % q && t.substr(i, m) == s){
+        if( d == h_s * p[i]  && t.substr(i, m) == s){
             cout << "found " << i << endl;
         }
     }
