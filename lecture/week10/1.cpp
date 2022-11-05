@@ -31,7 +31,6 @@ void f(string t, string s){
         long long d = h[i + m - 1];
         if(i > 0){
             d -= h[i-1];
-            //cout << t.substr(0, i) << " "  << t.substr(i, m) << " " << t.substr(0, i + m) <<  endl;
         }
         if( d == (h_s * p[i]) % q && t.substr(i, m) == s){
             cout << "found " << i << endl;
