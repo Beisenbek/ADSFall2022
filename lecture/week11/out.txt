@@ -1,0 +1,14 @@
+t:
+
+te:
+t e
+
+tes:
+t s
+te es
+
+test:
+t t
+te st
+tes est
+
